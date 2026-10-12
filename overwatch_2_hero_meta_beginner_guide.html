@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overwatch 2 Hero Guide & Meta Roster</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font: Inter & Rajdhani for esports aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Rajdhani', 'sans-serif'],
+          },
+          colors: {
+            ow: {
+              orange: '#f06414',
+              orangeDark: '#d04f08',
+              tank: '#0284c7', // Sky-blue / Cyan
+              tankBg: '#082f49',
+              dps: '#ea580c', // Bright orange
+              dpsBg: '#431407',
+              support: '#10b981', // Emerald green
+              supportBg: '#064e3b',
+              dark: '#0e131d',
+              card: '#161e2e',
+              border: '#283548'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom collapsible animation and scrollbar styling */
+    details > summary {
+      list-style: none;
+    }
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #111827;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #374151;
+      border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #4b5563;
+    }
+  </style>
+</head>
+<body class="bg-[#0b0f19] text-gray-100 font-sans min-h-screen selection:bg-ow-orange selection:text-white">
+
+  <header class="relative overflow-hidden border-b border-ow-border bg-gradient-to-b from-[#131b2e] to-[#0b0f19] pt-10 pb-8 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-ow-orange text-xs font-bold uppercase tracking-widest mb-3">
+          <span class="w-2 h-2 rounded-full bg-ow-orange animate-ping"></span>
+          Competitive & Beginner Handbook
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-display tracking-wide uppercase text-white drop-shadow-md">
+          OVERWATCH 2 <span class="text-ow-orange">HERO GUIDE</span>
+        </h1>
+        <p class="text-gray-400 mt-2 text-sm sm:text-base max-w-2xl">
+          Comprehensive breakdown of the Top 5 Competitive picks and Top 6 Quick Play & Onboarding heroes categorized by role, kit complexity, strengths, and weaknesses.
+        </p>
+      </div>
+
+      <!-- Quick Action Controls -->
+      <div class="flex flex-wrap items-center gap-3">
+        <button onclick="toggleAllAccordions(true)" class="px-4 py-2.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2">
+          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          Expand All
+        </button>
+        <button onclick="toggleAllAccordions(false)" class="px-4 py-2.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2">
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+          Collapse All
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+    <!-- Mode Selector Navigation -->
+    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+      <div class="flex items-center gap-2">
+        <a href="#competitive-section" class="px-4 py-2 rounded-lg bg-ow-orange text-white font-bold text-xs sm:text-sm uppercase tracking-wider hover:brightness-110 transition shadow-lg shadow-orange-900/20">
+          Ranked Competitive
+        </a>
+        <a href="#quickplay-section" class="px-4 py-2 rounded-lg bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 font-bold text-xs sm:text-sm uppercase tracking-wider transition border border-gray-700">
+          Quick Play & Beginners
+        </a>
+      </div>
+
+      <!-- Legend -->
+      <div class="flex flex-wrap items-center gap-2 text-xs font-semibold">
+        <span class="text-gray-400 mr-1">Complexity:</span>
+        <span class="px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-600/50 text-emerald-300">Low</span>
+        <span class="px-2 py-0.5 rounded bg-amber-950/80 border border-amber-600/50 text-amber-300">Medium</span>
+        <span class="px-2 py-0.5 rounded bg-orange-950/80 border border-orange-600/50 text-orange-300">High</span>
+        <span class="px-2 py-0.5 rounded bg-rose-950/80 border border-rose-600/50 text-rose-300">Very High</span>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECTION 1: TOP 5 COMPETITIVE HEROES         -->
+    <!-- ========================================== -->
+    <section id="competitive-section" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-l-4 border-ow-orange pl-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black font-display uppercase tracking-wider text-white">
+            Top 5 Competitive Heroes <span class="text-ow-orange">By Role</span>
+          </h2>
+          <p class="text-gray-400 text-xs sm:text-sm">
+            Optimal picks in coordinated, high-stakes matches balancing meta synergy, utility, and win consistency.
+          </p>
+        </div>
+        <span class="self-start sm:self-auto px-3 py-1 rounded bg-ow-orange/10 border border-ow-orange/40 text-ow-orange text-xs font-bold uppercase">
+          Meta Analysis
+        </span>
+      </div>
+
+      <!-- TANK (COMPETITIVE) -->
+      <details open class="group bg-ow-card rounded-xl border border-sky-900/50 shadow-lg overflow-hidden transition-all duration-200">
+        <summary class="flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-sky-950/60 via-ow-card to-ow-card cursor-pointer border-b border-sky-900/30 hover:bg-sky-900/20 select-none">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-sky-500/20 border border-sky-500/50 flex items-center justify-center text-sky-400">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 2.18l6 2.25v4.66c0 4.09-2.67 7.91-6 8.86-3.33-.95-6-4.77-6-8.86V6.43l6-2.25z"/></svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-lg sm:text-xl font-bold font-display uppercase tracking-wide text-sky-400">Tank Role</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-sky-500/20 text-sky-300">5 Heroes</span>
+              </div>
+              <p class="text-xs text-gray-400">Space creation, mitigation, and frontline tempo</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-gray-400 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </summary>
+
+        <div class="p-4 sm:p-6 overflow-x-auto custom-scroll">
+          <table class="w-full text-left text-sm border-collapse min-w-[760px]">
+            <thead>
+              <tr class="border-b border-gray-800 text-xs uppercase tracking-wider text-gray-400">
+                <th class="py-3 px-3">Hero</th>
+                <th class="py-3 px-3">Complexity</th>
+                <th class="py-3 px-3">Win / Success Rate</th>
+                <th class="py-3 px-3">Player Enjoyment</th>
+                <th class="py-3 px-4">Excels At (Strengths)</th>
+                <th class="py-3 px-4">Struggles With (Weaknesses)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800/60 font-normal">
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-sky-400"></span> Sigma
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Medium</span></td>
+                <td class="py-4 px-3 text-sky-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">Consistent meta staple</span></td>
+                <td class="py-4 px-3 text-gray-300">High <span class="block text-xs text-gray-500">Strategic spacing</span></td>
+                <td class="py-4 px-4 text-gray-300">Sightline dominance, cycling kinetic grasp &amp; shields, denying sniper lanes.</td>
+                <td class="py-4 px-4 text-rose-300/80">Fast close-range rush/brawl (Reinhardt/Lucio) bypassing his spacing.</td>
+              </tr>
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-sky-400"></span> D.Va
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-orange-950/80 border border-orange-500/50 text-orange-300">High</span></td>
+                <td class="py-4 px-3 text-sky-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">Supreme utility flex</span></td>
+                <td class="py-4 px-3 text-gray-300">Very High <span class="block text-xs text-gray-500">Agile aerial dive</span></td>
+                <td class="py-4 px-4 text-gray-300">Defense Matrix eating enemy ultimates (Grav, Blizzard), vertical peel, chasing snipers.</td>
+                <td class="py-4 px-4 text-rose-300/80">Beam weapons (Zarya, Symmetra, Mei) which penetrate Defense Matrix entirely.</td>
+              </tr>
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-sky-400"></span> Winston
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-orange-950/80 border border-orange-500/50 text-orange-300">High</span></td>
+                <td class="py-4 px-3 text-sky-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">Top rank ceiling</span></td>
+                <td class="py-4 px-3 text-gray-300">High <span class="block text-xs text-gray-500">Fast leap mechanics</span></td>
+                <td class="py-4 px-4 text-gray-300">Isolating backlines with Bubble, hitting through shields with Tesla cleave, dive execution.</td>
+                <td class="py-4 px-4 text-rose-300/80">Hard tank-busters (Bastion, Reaper, Mauga) shredding his large armor hitbox.</td>
+              </tr>
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-sky-400"></span> Junker Queen
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Medium</span></td>
+                <td class="py-4 px-3 text-sky-200 font-semibold">Med–High <span class="block text-xs font-normal text-gray-400">Snowballs with tempo</span></td>
+                <td class="py-4 px-3 text-gray-300">Very High <span class="block text-xs text-gray-500">Adrenaline brawler</span></td>
+                <td class="py-4 px-4 text-gray-300">Shout tempo speed boosts, knife displacement combos, anti-heal cleave with Rampage.</td>
+                <td class="py-4 px-4 text-rose-300/80">Long open maps, extreme burst sniper poke, Kiriko Suzu cleansing Rampage.</td>
+              </tr>
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-sky-400"></span> Ramattra
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Medium</span></td>
+                <td class="py-4 px-3 text-sky-200 font-semibold">Consistent <span class="block text-xs font-normal text-gray-400">Adaptable pick</span></td>
+                <td class="py-4 px-3 text-gray-300">High <span class="block text-xs text-gray-500">Dual combat forms</span></td>
+                <td class="py-4 px-4 text-gray-300">Piercing barriers in Nemesis Form, locking choke points with Ravenous Vortex, stalling points.</td>
+                <td class="py-4 px-4 text-rose-300/80">Lacks vertical mobility; vulnerable to focused fire when Nemesis form wears off.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- DAMAGE (COMPETITIVE) -->
+      <details open class="group bg-ow-card rounded-xl border border-orange-900/50 shadow-lg overflow-hidden transition-all duration-200">
+        <summary class="flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-orange-950/60 via-ow-card to-ow-card cursor-pointer border-b border-orange-900/30 hover:bg-orange-900/20 select-none">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-orange-500/20 border border-orange-500/50 flex items-center justify-center text-orange-400">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-lg sm:text-xl font-bold font-display uppercase tracking-wide text-orange-400">Damage (DPS) Role</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-orange-500/20 text-orange-300">5 Heroes</span>
+              </div>
+              <p class="text-xs text-gray-400">Burst eliminations, flank pressure, and lane control</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-gray-400 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </summary>
+
+        <div class="p-4 sm:p-6 overflow-x-auto custom-scroll">
+          <table class="w-full text-left text-sm border-collapse min-w-[760px]">
+            <thead>
+              <tr class="border-b border-gray-800 text-xs uppercase tracking-wider text-gray-400">
+                <th class="py-3 px-3">Hero</th>
+                <th class="py-3 px-3">Complexity</th>
+                <th class="py-3 px-3">Win / Success Rate</th>
+                <th class="py-3 px-3">Player Enjoyment</th>
+                <th class="py-3 px-4">Excels At (Strengths)</th>
+                <th class="py-3 px-4">Struggles With (Weaknesses)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800/60">
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-orange-400"></span> Tracer
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-rose-950/80 border border-rose-500/50 text-rose-300">Very High</span></td>
+                <td class="py-4 px-3 text-orange-200 font-semibold">Very High <span class="block text-xs font-normal text-gray-400">Unmatched ceiling</span></td>
+                <td class="py-4 px-3 text-gray-300">Maximum <span class="block text-xs text-gray-500">Hyper-mobility</span></td>
+                <td class="py-4 px-4 text-gray-300">Splitting team focus, assassinating backline supports, blinking out of lethal danger.</td>
+                <td class="py-4 px-4 text-rose-300/80">Tiny 175 HP pool; one error or stray burst shot results in immediate death.</td>
+              </tr>
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-orange-400"></span> Ashe
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Medium</span></td>
+                <td class="py-4 px-3 text-orange-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">Consistent anchor</span></td>
+                <td class="py-4 px-3 text-gray-300">High <span class="block text-xs text-gray-500">Satisfying rifle</span></td>
+                <td class="py-4 px-4 text-gray-300">Dynamite multi-target burning pressure, high-ground holding, game-altering B.O.B. deployment.</td>
+                <td class="py-4 px-4 text-rose-300/80">Coordinated dive compositions jumping her when Coach Gun is on cooldown.</td>
+              </tr>
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-orange-400"></span> Genji
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-orange-950/80 border border-orange-500/50 text-orange-300">High</span></td>
+                <td class="py-4 px-3 text-orange-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">Snowball reset king</span></td>
+                <td class="py-4 px-3 text-gray-300">Very High <span class="block text-xs text-gray-500">Agile ninja flow</span></td>
+                <td class="py-4 px-4 text-gray-300">Dash kill resets, turning enemy ultimates with Deflect, explosive Nano-Blade wipes.</td>
+                <td class="py-4 px-4 text-rose-300/80">Beams bypassing Deflect (Moira, Mei, Zarya, Symmetra) and heavily disciplined backlines.</td>
+              </tr>
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-orange-400"></span> Cassidy
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Medium</span></td>
+                <td class="py-4 px-3 text-orange-200 font-semibold">Consistent <span class="block text-xs font-normal text-gray-400">Anti-flank bodyguard</span></td>
+                <td class="py-4 px-3 text-gray-300">High <span class="block text-xs text-gray-500">Crisp revolver hits</span></td>
+                <td class="py-4 px-4 text-gray-300">Hindering high-mobility flankers with Magnetic Grenade, rapid burst duels at close/mid ranges.</td>
+                <td class="py-4 px-4 text-rose-300/80">Zero vertical mobility; heavy damage falloff over long open distances.</td>
+              </tr>
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-orange-400"></span> Sojourn
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-orange-950/80 border border-orange-500/50 text-orange-300">High</span></td>
+                <td class="py-4 px-3 text-orange-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">Unrivaled carry value</span></td>
+                <td class="py-4 px-3 text-gray-300">High <span class="block text-xs text-gray-500">Precision slide-rails</span></td>
+                <td class="py-4 px-4 text-gray-300">Instagib Railgun headshots, Power Slide vertical repositioning, disruptive Disruptor Shot.</td>
+                <td class="py-4 px-4 text-rose-300/80">Sub-par tracking/flick aim turns her into dead weight without Railgun connections.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- SUPPORT (COMPETITIVE) -->
+      <details open class="group bg-ow-card rounded-xl border border-emerald-900/50 shadow-lg overflow-hidden transition-all duration-200">
+        <summary class="flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-emerald-950/60 via-ow-card to-ow-card cursor-pointer border-b border-emerald-900/30 hover:bg-emerald-900/20 select-none">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-emerald-400">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-lg sm:text-xl font-bold font-display uppercase tracking-wide text-emerald-400">Support Role</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/20 text-emerald-300">5 Heroes</span>
+              </div>
+              <p class="text-xs text-gray-400">Fight-turning utility, burst healing, and defensive saves</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-gray-400 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </summary>
+
+        <div class="p-4 sm:p-6 overflow-x-auto custom-scroll">
+          <table class="w-full text-left text-sm border-collapse min-w-[760px]">
+            <thead>
+              <tr class="border-b border-gray-800 text-xs uppercase tracking-wider text-gray-400">
+                <th class="py-3 px-3">Hero</th>
+                <th class="py-3 px-3">Complexity</th>
+                <th class="py-3 px-3">Win / Success Rate</th>
+                <th class="py-3 px-3">Player Enjoyment</th>
+                <th class="py-3 px-4">Excels At (Strengths)</th>
+                <th class="py-3 px-4">Struggles With (Weaknesses)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800/60">
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Ana
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-orange-950/80 border border-orange-500/50 text-orange-300">High</span></td>
+                <td class="py-4 px-3 text-emerald-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">Game-deciding utility</span></td>
+                <td class="py-4 px-3 text-gray-300">Very High <span class="block text-xs text-gray-500">Sniper-support thrill</span></td>
+                <td class="py-4 px-4 text-gray-300">Canceling ultimates with Sleep Dart, 100% anti-healing Biotic Grenade, game-winning Nano Boost.</td>
+                <td class="py-4 px-4 text-rose-300/80">Completely devoid of mobility; vulnerable to flanking if cooldowns are spent.</td>
+              </tr>
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Kiriko
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-orange-950/80 border border-orange-500/50 text-orange-300">High</span></td>
+                <td class="py-4 px-3 text-emerald-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">Universal versatility</span></td>
+                <td class="py-4 px-3 text-gray-300">High <span class="block text-xs text-gray-500">Evasive playmaker</span></td>
+                <td class="py-4 px-4 text-gray-300">Cleansing anti-heals/stuns with Protection Suzu, Swift Step through walls, lethal kunai crits.</td>
+                <td class="py-4 px-4 text-rose-300/80">Slow travel projectile heals; low damage output if headshots aren't consistently landed.</td>
+              </tr>
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Juno
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Medium</span></td>
+                <td class="py-4 px-3 text-emerald-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">High-pick tempo speed</span></td>
+                <td class="py-4 px-3 text-gray-300">High <span class="block text-xs text-gray-500">Fluid aerial mobility</span></td>
+                <td class="py-4 px-4 text-gray-300">Hyper Ring team speed boosts, locking multi-target torpedoes, continuous tracking stream.</td>
+                <td class="py-4 px-4 text-rose-300/80">No burst invulnerability cooldown; vulnerable when aerial hover path is predictable.</td>
+              </tr>
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Lúcio
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-orange-950/80 border border-orange-500/50 text-orange-300">High</span></td>
+                <td class="py-4 px-3 text-emerald-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">Team coordination core</span></td>
+                <td class="py-4 px-3 text-gray-300">Very High <span class="block text-xs text-gray-500">Wall-riding freedom</span></td>
+                <td class="py-4 px-4 text-gray-300">Dictating engage/disengage with Speed Boost, defensive Sound Barrier, environmental boops.</td>
+                <td class="py-4 px-4 text-rose-300/80">Lower single-target burst healing when allies take sudden spike damage.</td>
+              </tr>
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Zenyatta
+                </td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Medium</span></td>
+                <td class="py-4 px-3 text-emerald-200 font-semibold">High <span class="block text-xs font-normal text-gray-400">Offensive tank-melter</span></td>
+                <td class="py-4 px-3 text-gray-300">High <span class="block text-xs text-gray-500">Glass cannon fragger</span></td>
+                <td class="py-4 px-4 text-gray-300">Orb of Discord melting opposing tanks, massive projectile damage, clutch Transcendence.</td>
+                <td class="py-4 px-4 text-rose-300/80">Wide circular hitbox and zero mobility makes him prime target #1 for enemy flankers.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: TOP 6 NEW PLAYER / QUICK PLAY    -->
+    <!-- ========================================== -->
+    <section id="quickplay-section" class="space-y-6 pt-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-l-4 border-emerald-500 pl-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black font-display uppercase tracking-wider text-white">
+            Top 6 Quick Play &amp; Beginner Heroes <span class="text-emerald-400">By Role</span>
+          </h2>
+          <p class="text-gray-400 text-xs sm:text-sm">
+            Forgiving kits, intuitive mechanics, and strong self-reliance for players learning the game or playing casual queues.
+          </p>
+        </div>
+        <span class="self-start sm:self-auto px-3 py-1 rounded bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 text-xs font-bold uppercase">
+          New Player Recommended
+        </span>
+      </div>
+
+      <!-- TANK (QUICKPLAY / NEW PLAYERS) -->
+      <details open class="group bg-ow-card rounded-xl border border-sky-900/50 shadow-lg overflow-hidden transition-all duration-200">
+        <summary class="flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-sky-950/60 via-ow-card to-ow-card cursor-pointer border-b border-sky-900/30 hover:bg-sky-900/20 select-none">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-sky-500/20 border border-sky-500/50 flex items-center justify-center text-sky-400">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/></svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-lg sm:text-xl font-bold font-display uppercase tracking-wide text-sky-400">Tank: Quick Play &amp; Beginners</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-sky-500/20 text-sky-300">6 Heroes</span>
+              </div>
+              <p class="text-xs text-gray-400">Straightforward defense, clear feedback, and high durability</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-gray-400 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </summary>
+
+        <div class="p-4 sm:p-6 overflow-x-auto custom-scroll">
+          <table class="w-full text-left text-sm border-collapse min-w-[760px]">
+            <thead>
+              <tr class="border-b border-gray-800 text-xs uppercase tracking-wider text-gray-400">
+                <th class="py-3 px-3">Hero</th>
+                <th class="py-3 px-3">Complexity</th>
+                <th class="py-3 px-3">Why It's Great for Beginners</th>
+                <th class="py-3 px-3">Enjoyment</th>
+                <th class="py-3 px-4">Excels At</th>
+                <th class="py-3 px-4">Struggles With</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800/60">
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Reinhardt</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Low</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Clear frontline identity. Massive shield protects allies effortlessly; hammer swings hit in wide arcs without precision aim.</td>
+                <td class="py-4 px-3 text-sky-200 font-medium">Very High <span class="block text-xs text-gray-400">Satisfying hammer</span></td>
+                <td class="py-4 px-4 text-gray-300">Choke dominance, pushing through payload bottlenecks, Earthshatter team stuns.</td>
+                <td class="py-4 px-4 text-rose-300/80">Getting kited on open maps; long-range crossfires.</td>
+              </tr>
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Roadhog</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Low–Med</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Massive self-heal with Take a Breather minimizes dependency on support teammates in solo queue.</td>
+                <td class="py-4 px-3 text-sky-200 font-medium">High <span class="block text-xs text-gray-400">Addictive hook</span></td>
+                <td class="py-4 px-4 text-gray-300">Instantly punishing bad enemy positioning; independent survival.</td>
+                <td class="py-4 px-4 text-rose-300/80">Anti-heal grenade (Ana); acts as an Ultimate battery for enemies.</td>
+              </tr>
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Orisa</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Low</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Fortify makes her immune to stuns and crowd control, forgiving positioning mistakes.</td>
+                <td class="py-4 px-3 text-sky-200 font-medium">Medium–High <span class="block text-xs text-gray-400">Immovable wall</span></td>
+                <td class="py-4 px-4 text-gray-300">Absorbing heavy frontline focus fire; pushing back aggressive tanks.</td>
+                <td class="py-4 px-4 text-rose-300/80">Peeling for backlines; high-mobility dive comps bypassing her.</td>
+              </tr>
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Sigma</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Medium</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Mobile shield can be pushed forward or recalled instantly; primary fire bounces around corners.</td>
+                <td class="py-4 px-3 text-sky-200 font-medium">High <span class="block text-xs text-gray-400">Controlled rhythm</span></td>
+                <td class="py-4 px-4 text-gray-300">Teaches sightline awareness, shield management, and poke control.</td>
+                <td class="py-4 px-4 text-rose-300/80">Fast close-quarters brawlers rushing inside his barrier.</td>
+              </tr>
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Mauga</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Low</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Simple dual chain guns (ignite then crit). Extremely familiar to traditional FPS players.</td>
+                <td class="py-4 px-3 text-sky-200 font-medium">High <span class="block text-xs text-gray-400">Continuous fire</span></td>
+                <td class="py-4 px-4 text-gray-300">Mowing down large enemy tanks; charging through crowds unstoppable.</td>
+                <td class="py-4 px-4 text-rose-300/80">Ana's anti-heal grenade and Defense Matrix eating his lifesteal.</td>
+              </tr>
+              <tr class="hover:bg-sky-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Zarya</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Medium</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Intuitive feedback loop: bubble yourself or ally when taking damage to supercharge your laser beam.</td>
+                <td class="py-4 px-3 text-sky-200 font-medium">High <span class="block text-xs text-gray-400">Max energy beam</span></td>
+                <td class="py-4 px-4 text-gray-300">Melting mobile heroes with 100% beam; cleansing debuffs and burns.</td>
+                <td class="py-4 px-4 text-rose-300/80">Disciplined teams that hold fire, keeping her energy bar near zero.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- DAMAGE (QUICKPLAY / NEW PLAYERS) -->
+      <details open class="group bg-ow-card rounded-xl border border-orange-900/50 shadow-lg overflow-hidden transition-all duration-200">
+        <summary class="flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-orange-950/60 via-ow-card to-ow-card cursor-pointer border-b border-orange-900/30 hover:bg-orange-900/20 select-none">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-orange-500/20 border border-orange-500/50 flex items-center justify-center text-orange-400">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-lg sm:text-xl font-bold font-display uppercase tracking-wide text-orange-400">Damage (DPS): Quick Play &amp; Beginners</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-orange-500/20 text-orange-300">6 Heroes</span>
+              </div>
+              <p class="text-xs text-gray-400">Familiar weapon archetypes, high survivability, and easy impact</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-gray-400 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </summary>
+
+        <div class="p-4 sm:p-6 overflow-x-auto custom-scroll">
+          <table class="w-full text-left text-sm border-collapse min-w-[760px]">
+            <thead>
+              <tr class="border-b border-gray-800 text-xs uppercase tracking-wider text-gray-400">
+                <th class="py-3 px-3">Hero</th>
+                <th class="py-3 px-3">Complexity</th>
+                <th class="py-3 px-3">Why It's Great for Beginners</th>
+                <th class="py-3 px-3">Enjoyment</th>
+                <th class="py-3 px-4">Excels At</th>
+                <th class="py-3 px-4">Struggles With</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800/60">
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Soldier: 76</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Low</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">The quintessential tutorial hero. Tactical sprint, personal Biotic Field heal, and an auto-lock Tactical Visor.</td>
+                <td class="py-4 px-3 text-orange-200 font-medium">High <span class="block text-xs text-gray-400">Familiar FPS controls</span></td>
+                <td class="py-4 px-4 text-gray-300">Sustained tracking damage, self-healing on flanks, chasing wounded foes.</td>
+                <td class="py-4 px-4 text-rose-300/80">Burst damage trading against instant snipers; heavy barriers.</td>
+              </tr>
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Reaper</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Low</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Shotguns heal him as he inflicts damage. Wraith Form offers a guaranteed invulnerable escape button.</td>
+                <td class="py-4 px-3 text-orange-200 font-medium">High <span class="block text-xs text-gray-400">Flank ambushes</span></td>
+                <td class="py-4 px-4 text-gray-300">Shredding big enemy tanks at point blank; sneaking behind lines.</td>
+                <td class="py-4 px-4 text-rose-300/80">Open maps and long-range enemies who stay out of shotgun reach.</td>
+              </tr>
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Torbjörn</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Low</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Automated turret automatically locks and fires at enemies, providing value even if your manual aim is off.</td>
+                <td class="py-4 px-3 text-orange-200 font-medium">High <span class="block text-xs text-gray-400">Chill defensive flow</span></td>
+                <td class="py-4 px-4 text-gray-300">Holding tight choke points, deterring agile flankers, survivability via Overload.</td>
+                <td class="py-4 px-4 text-rose-300/80">Long-range snipers who pick off his turret from outside its range.</td>
+              </tr>
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Junkrat</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Low</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Bouncing grenade launcher allows safe spam from behind hard cover without exposing your character model.</td>
+                <td class="py-4 px-3 text-orange-200 font-medium">Very High <span class="block text-xs text-gray-400">Pure chaos &amp; bounce</span></td>
+                <td class="py-4 px-4 text-gray-300">Total area denial, locking doors with traps, bouncing into enemy nests with mines.</td>
+                <td class="py-4 px-4 text-rose-300/80">Flying heroes (Pharah, Echo) and accurate long-range hitscans.</td>
+              </tr>
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Cassidy</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Low–Med</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Straightforward weapon handling, simple combat roll that instantly reloads, and self-defending Magnetic Grenade.</td>
+                <td class="py-4 px-3 text-orange-200 font-medium">High <span class="block text-xs text-gray-400">Gunplay satisfaction</span></td>
+                <td class="py-4 px-4 text-gray-300">Reliable medium-range dueling and punishing aggressive dives.</td>
+                <td class="py-4 px-4 text-rose-300/80">High mobility repositioning; severe damage drop-off across long sightlines.</td>
+              </tr>
+              <tr class="hover:bg-orange-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Mei</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Low–Med</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Cryo-Freeze provides invulnerability and 100% self-healing, giving beginners an emergency safety net.</td>
+                <td class="py-4 px-3 text-orange-200 font-medium">High <span class="block text-xs text-gray-400">Trolling with walls</span></td>
+                <td class="py-4 px-4 text-gray-300">Isolating overextended tanks using Ice Wall; slowing slippery flankers.</td>
+                <td class="py-4 px-4 text-rose-300/80">Open, sprawling maps where Ice Wall cannot wall off paths.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- SUPPORT (QUICKPLAY / NEW PLAYERS) -->
+      <details open class="group bg-ow-card rounded-xl border border-emerald-900/50 shadow-lg overflow-hidden transition-all duration-200">
+        <summary class="flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-emerald-950/60 via-ow-card to-ow-card cursor-pointer border-b border-emerald-900/30 hover:bg-emerald-900/20 select-none">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-emerald-400">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-lg sm:text-xl font-bold font-display uppercase tracking-wide text-emerald-400">Support: Quick Play &amp; Beginners</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/20 text-emerald-300">6 Heroes</span>
+              </div>
+              <p class="text-xs text-gray-400">High auto-tracking heals, self-sustain, and easy escape abilities</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-gray-400 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </summary>
+
+        <div class="p-4 sm:p-6 overflow-x-auto custom-scroll">
+          <table class="w-full text-left text-sm border-collapse min-w-[760px]">
+            <thead>
+              <tr class="border-b border-gray-800 text-xs uppercase tracking-wider text-gray-400">
+                <th class="py-3 px-3">Hero</th>
+                <th class="py-3 px-3">Complexity</th>
+                <th class="py-3 px-3">Why It's Great for Beginners</th>
+                <th class="py-3 px-3">Enjoyment</th>
+                <th class="py-3 px-4">Excels At</th>
+                <th class="py-3 px-4">Struggles With</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800/60">
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Moira</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Very Low</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Soft lock-on beam requires minimal aim. Fade is arguably the most reliable invulnerable teleport escape in the game.</td>
+                <td class="py-4 px-3 text-emerald-200 font-medium">High <span class="block text-xs text-gray-400">Stress-free impact</span></td>
+                <td class="py-4 px-4 text-gray-300">High volume group healing, dueling flankers, escaping lethal ults.</td>
+                <td class="py-4 px-4 text-rose-300/80">Provides no team buffs, speed, or utility—strictly raw output.</td>
+              </tr>
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Mercy</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Low</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Continuous tether beam locks onto allies with no aiming needed. Guardian Angel allows effortless flying to teammates.</td>
+                <td class="py-4 px-3 text-emerald-200 font-medium">High <span class="block text-xs text-gray-400">Aerial acrobatics</span></td>
+                <td class="py-4 px-4 text-gray-300">Pocketing strong DPS with Damage Boost; resurrecting critical fallen allies.</td>
+                <td class="py-4 px-4 text-rose-300/80">Inability to fight back when isolated from allies.</td>
+              </tr>
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Illari</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Low–Med</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Deploy the Healing Pylon high up on a wall, and it heals your squad autonomously while you focus on hitscan shooting.</td>
+                <td class="py-4 px-3 text-emerald-200 font-medium">High <span class="block text-xs text-gray-400">Support-sniper balance</span></td>
+                <td class="py-4 px-4 text-gray-300">Passive sustained team sustain; adding real ranged hitscan damage.</td>
+                <td class="py-4 px-4 text-rose-300/80">Aggressive flankers that prioritize and destroy her pylon immediately.</td>
+              </tr>
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Lúcio</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">Low (Floor)</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Provides value by simply standing near teammates with your heal song active. High survivability from passive wall riding.</td>
+                <td class="py-4 px-4 text-emerald-200 font-medium">Very High <span class="block text-xs text-gray-400">Speed and boops</span></td>
+                <td class="py-4 px-4 text-gray-300">Passive group sustain, environmental pit-fall kills, escaping bad spots.</td>
+                <td class="py-4 px-4 text-rose-300/80">Single-target burst healing when a teammate is under focused burst.</td>
+              </tr>
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Lifeweaver</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Low–Med</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Generous lock-on floral healing bursts track teammates through air, making whiffing heals almost impossible.</td>
+                <td class="py-4 px-3 text-emerald-200 font-medium">Med–High <span class="block text-xs text-gray-400">Life Grip rescues</span></td>
+                <td class="py-4 px-4 text-gray-300">Life Grip saving overextended teammates from lethal pits or ultimates.</td>
+                <td class="py-4 px-4 text-rose-300/80">Very low offensive weapon threat; large personal hit box.</td>
+              </tr>
+              <tr class="hover:bg-emerald-950/20 transition">
+                <td class="py-4 px-3 font-bold text-white">Baptiste</td>
+                <td class="py-4 px-3"><span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 border border-amber-500/50 text-amber-300">Medium</span></td>
+                <td class="py-4 px-3 text-gray-300 text-xs">Immortality Field grants a second chance against wipe mechanics (D.Va bomb, Rip-Tire), plus an effortless vertical leap.</td>
+                <td class="py-4 px-3 text-emerald-200 font-medium">High <span class="block text-xs text-gray-400">Gun &amp; clutch saves</span></td>
+                <td class="py-4 px-4 text-gray-300">Area-of-effect grenade healing; preventing guaranteed team deaths.</td>
+                <td class="py-4 px-4 text-rose-300/80">Teammates who spread apart or fly, making grenade clusters hard to land.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="bg-gradient-to-r from-gray-900 to-[#141b2a] border border-gray-800 rounded-xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2">
+        <h4 class="text-lg font-bold text-white font-display uppercase tracking-wider">Need to toggle specific roles?</h4>
+        <p class="text-sm text-gray-400 max-w-xl">
+          Use the quick toggles above or click on any role banner to collapse or expand individual tables. Hover over hero rows to inspect individual kits and situational trade-offs.
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="scrollToTop()" class="px-5 py-2.5 rounded-lg bg-ow-orange hover:bg-ow-orangeDark text-white font-semibold text-sm transition shadow-md">
+          Back to Top ↑
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-gray-800 py-6 text-center text-xs text-gray-500">
+    Overwatch Hero Meta &amp; Beginner Analysis • Responsive Interactive Edition
+  </footer>
+
+  <!-- SCRIPT: Accordion toggling logic -->
+  <script>
+    function toggleAllAccordions(shouldOpen) {
+      const allDetails = document.querySelectorAll('details');
+      allDetails.forEach(detail => {
+        detail.open = shouldOpen;
+      });
+    }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</body>
+</html>
